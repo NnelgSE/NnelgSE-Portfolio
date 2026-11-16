@@ -1,0 +1,425 @@
+/* Custom Portfolio Styles — Bootstrap Violet Aesthetic */
+:root {
+  --bs-purple: #6f42c1;
+  --bs-purple-hover: #59359a;
+  --bs-purple-active: #4d2789;
+  --bs-purple-glow: rgba(111, 66, 193, 0.35);
+  --bs-light-green: #26c117;
+
+
+  /* Action button colors */
+  --btn-resume: #ebe6f5;
+  --btn-resume-hover: #59359a;
+
+  --btn-talk: #10e453;
+  --btn-talk-hover: #20a915;
+
+  /* Text colors */
+  --text-primary: #e6e3ef;
+  --text-secondary: #625b70;
+
+  /* Background colors in light mode*/
+  --bg-primary: #e5e5e5;
+  --bg-secondary: #d4d4d4;
+}
+
+
+
+.dark {
+  --text-primary: #f1ebfa;
+  --text-secondary: #c0b5d2;
+
+  --bg-primary: #1f1f1f;
+  --bg-secondary: #262626;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Custom Scrollbar in Violet */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(255, 63%, 81%);
+  /*#c4b5fd   This is the default color for light mode */
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #2f1952;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6f42c1;
+}
+
+/* Unified Primary Button Styles (Same Hover across all buttons) */
+.btn-brand,
+.btn-primary-custom,
+button.btn-brand,
+a.btn-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--bs-purple);
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 5px;
+  box-shadow: 0 4px 14px 0 var(--bs-purple-glow);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+
+.btn-brand:hover,
+.btn-primary-custom:hover,
+button.btn-brand:hover,
+a.btn-brand:hover {
+  background-color: var(--bs-purple-hover) !important;
+  color: #e8e3ea !important;
+  box-shadow: 0 10px 25px -3px rgba(111, 66, 193, 0.5) !important;
+  transform: translateY(-2px);
+  border-radius: 5px;
+}
+
+.btn-brand:active,
+.btn-primary-custom:active {
+  background-color: var(--bs-purple-active) !important;
+  transform: translateY(0);
+}
+
+.btn-talk:hover {
+  background: var(--btn-talk);
+  color: #000;
+  font-weight: bolder;
+}
+
+.btn-talk {
+  background: #51c447;
+  color: #f2eded;
+  font-weight: bolder;
+  border-radius: 5px;
+  border: 1px solid #000;
+}
+
+.btn-talk:active {
+  background: #10e453;
+  transform: translate(0);
+}
+
+
+
+/* Secondary / Outline Button with Violet Hover */
+.btn-brand-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #1e293b;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .btn-brand-outline {
+  background-color: #150a2a;
+  color: #f1f5f9;
+  border-radius: 5px;
+}
+
+.btn-brand-outline:hover {
+  border-color: var(--bs-purple);
+  color: var(--btn-resume);
+  background-color: #6f33aa;
+  border: 1px solid #000;
+  border-radius: 5px;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px -3px rgba(111, 66, 193, 0.15);
+}
+
+.dark .btn-brand-outline:hover {
+  color: #f0eef2;
+  background-color: var(--bs-purple);
+  border-radius: 5px;
+  font-weight: bolder;
+}
+
+/* Hero Background Cover Slider & Crossfade */
+.hero-slider-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 1.2s ease-in-out, transform 4s ease-out;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Profile Rounded Frame */
+.profile-avatar-frame {
+  position: relative;
+  border-radius: 20px;
+  padding: 6px;
+  background: linear-gradient(135deg, #322a3a 10%, #3e324f 50%, #624f7b 50%, );
+  box-shadow: 0 20px 40px -10px rgba(111, 66, 193, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.2);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.profile-avatar-frame:hover {
+  transform: scale(1.03);
+  box-shadow: 0 25px 50px -10px rgba(111, 66, 193, 0.65), 0 0 0 2px rgba(168, 85, 247, 0.5);
+}
+
+.profile-avatar-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #bdb0d0;
+  border: 5px solid #d2c7c7;
+}
+
+.dark .profile-avatar-inner {
+  border-color: #1b0d36;
+}
+
+/* Achievement Badge Cards (Dark-Themed matching certificates screenshot) */
+.achievement-card {
+  position: relative;
+  border-radius: 1.25rem;
+  border: 1px solid #2a1650;
+  background: linear-gradient(180deg, #160a2c 0%, #0f0720 100%);
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-4px);
+  border-color: #6f42c1;
+  box-shadow: 0 15px 35px -5px rgba(111, 66, 193, 0.25);
+}
+
+.badge-hex-icon {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e0f3d 0%, #2b1458 100%);
+  border: 1px solid #3d1f7c;
+  box-shadow: 0 4px 12px rgba(111, 66, 193, 0.2);
+}
+
+/* Skill Card */
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid #e9d5ff;
+  background-color: #ffffff;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.dark .skill-card {
+  border-color: #2a1650;
+  background-color: #150a2a;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px -5px rgba(111, 66, 193, 0.18);
+  border-color: #6f42c1;
+}
+
+/* Project Card */
+.project-card {
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid #e9d5ff;
+  background-color: #ffffff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.dark .project-card {
+  border-color: #2a1650;
+  background-color: #150a2a;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: #8b5cf6;
+  box-shadow: 0 20px 35px -10px rgba(111, 66, 193, 0.2);
+}
+
+/* Custom Project Card Image Zoom Effect */
+.project-card .image-container img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover .image-container img {
+  transform: scale(1.08);
+}
+
+.dark .project-card:hover {
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.6);
+}
+
+.project-tag {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border-radius: 0.375rem;
+  background-color: #f3e8ff;
+  color: #59359a;
+}
+
+.dark .project-tag {
+  background-color: rgba(111, 66, 193, 0.25);
+  color: #d8b4fe;
+}
+
+/* Form Inputs */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0.75rem;
+  border: 1px solid #e2e8f0;
+  background-color: #faf5ff;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.dark .form-input {
+  border-color: #2a1650;
+  background-color: #0c061a;
+  color: #f1f5f9;
+}
+
+.form-input:focus {
+  border-color: #6f42c1;
+  box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.2);
+}
+
+/* Social Buttons */
+.social-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.75rem;
+  width: 2.75rem;
+  border-radius: 9999px;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  transition: all 0.2s ease;
+}
+
+.dark .social-circle {
+  border-color: #2a1650;
+  color: #c4b5fd;
+}
+
+.social-circle:hover {
+  background-color: #6f42c1;
+  border-color: #6f42c1;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px -2px rgba(111, 66, 193, 0.4);
+}
+
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Paragraph text */
+p {
+  color: var(--text-secondary);
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-primary);
+}
+
+/* PROJECT REPOSITORY BUTTON */
+.project-repo-btn {
+  background-color: transparent;
+  border: 1px solid #010201;
+  color: #060606;
+  transition: all 0.3s ease;
+}
+
+.project-repo-btn:hover {
+  background-color: #16a34a;
+  border-color: #16a34a;
+  color: #040404;
+}
+
+/* PROJECT LIVE PREVIEW BUTTON */
+.project-preview-btn {
+  background-color: transparent;
+  border: 1px solid #6f42c1;
+  color: #060607;
+  transition: all 0.3s ease;
+}
+
+.project-preview-btn:hover {
+  background-color: #6f42c1;
+  border-color: #6f42c1;
+  color: #070707;
+}
+
+/* DARK THEME */
+.dark .project-repo-btn {
+  color: #4ade80;
+}
+
+.dark .project-repo-btn:hover {
+  background-color: #16a34a;
+  border-color: #16a34a;
+  color: #ffffff;
+}
+
+.dark .project-preview-btn {
+  color: #c4b5fd;
+}

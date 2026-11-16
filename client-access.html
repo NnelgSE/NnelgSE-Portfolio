@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client Access — MyProject Insight</title>
+    <meta
+      name="description"
+      content="Client Access Portal for MyProject Insight. Enter your email address to leave a project message or request dashboard access."
+    />
+
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <!-- Tailwind CSS via CDN with Bootstrap Violet Palette -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', "sans-serif"],
+              mono: ['"JetBrains Mono"', "monospace"],
+            },
+            colors: {
+              brand: {
+                50: "#faf5ff",
+                100: "#f3e8ff",
+                200: "#e9d5ff",
+                300: "#d8b4fe",
+                400: "#a78bfa",
+                500: "#8b5cf6",
+                600: "#6f42c1" /* Bootstrap Brand Violet */,
+                700: "#59359a" /* Bootstrap Hover Violet */,
+                800: "#4d2789",
+                900: "#381468",
+                950: "#1b0833",
+              },
+              dark: {
+                bg: "#0c061a",
+                surface: "#150a2a",
+                card: "#1b0d36",
+                border: "#2a1650",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body
+    class="bg-slate-50 text-slate-900 antialiased transition-colors duration-300 dark:bg-dark-bg dark:text-slate-100 min-h-screen flex flex-col justify-between"
+  >
+    <!-- ================= TOP NAVIGATION ================= -->
+    <header
+      class="fixed top-0 z-40 w-full border-b border-dark-border bg-dark-bg/95 backdrop-blur-md transition-colors duration-300"
+    >
+      <div
+        class="mx-auto flex max-w-5xl items-center justify-between px-5 py-3.5"
+      >
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div
+            class="flex items-center justify-center w-auto h-auto bg-transparent border-0 rounded-none overflow-visible"
+          >
+            <img
+              id="navLogoImg"
+              src="assets/myname_logo.png"
+              alt="GonzVertex"
+              class="block h-8 w-auto shrink-0 object-contain sm:h-9 md:h-10"
+            />
+          </div>
+        </a>
+
+        <div class="flex items-center gap-3">
+          <!-- Theme Toggle -->
+          <button
+            id="themeToggle"
+            type="button"
+            aria-label="Toggle dark mode"
+            class="flex h-9 w-9 items-center justify-center rounded-full border border-purple-100 text-slate-700 transition hover:bg-purple-50 dark:border-dark-border dark:text-slate-300 dark:hover:bg-dark-card"
+          >
+            <i id="themeIcon" class="fa-solid fa-moon text-xs"></i>
+          </button>
+
+          <a
+            href="index.html"
+            class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-3.5 py-1.5 text-xs font-bold text-slate-700 transition hover:border-brand-600 hover:text-brand-600 dark:border-dark-border dark:bg-dark-card dark:text-slate-200 dark:hover:border-brand-500"
+          >
+            <i class="fa-solid fa-arrow-left"></i> Back to Website
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= CLIENT ACCESS FORM SECTION ================= -->
+    <main class="py-12 px-5 flex-grow flex items-center justify-center">
+      <div class="w-full max-w-lg">
+        <!-- Card Container -->
+        <div
+          class="rounded-3xl border border-purple-200 bg-white p-7 sm:p-9 shadow-2xl dark:border-dark-border dark:bg-dark-surface transition-all"
+        >
+          <!-- Header badge & title -->
+          <div class="text-center">
+            <div
+              class="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 shadow-md shadow-brand-600/20 dark:bg-brand-950/70 dark:text-brand-300 mb-3"
+            >
+              <i class="fa-solid fa-lock-open text-xl"></i>
+            </div>
+            <span
+              class="inline-block rounded-full bg-brand-100 px-3 py-1 text-[11px] font-bold text-brand-700 dark:bg-brand-950 dark:text-brand-300"
+            >
+              Secure Client Workspace
+            </span>
+            <h1
+              class="mt-2 text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white"
+            >
+              Client Access
+            </h1>
+            <p
+              class="mt-1.5 text-xs text-slate-500 dark:text-slate-400 leading-relaxed"
+            >
+              Fast, passwordless access for project partners. Enter your email
+              address and leave your message or project requirements below.
+            </p>
+          </div>
+
+          <!-- The Login Form: Email Address Only + Leave a Message -->
+          <form id="clientAccessForm" class="mt-7 space-y-4">
+            <!-- Field 1: Email address only -->
+            <div>
+              <label
+                for="clientEmail"
+                class="block text-xs font-bold uppercase text-slate-600 dark:text-slate-400 mb-1.5 flex items-center justify-between"
+              >
+                <span>Email Address</span>
+                <span
+                  class="text-[10px] text-brand-600 dark:text-brand-400 font-semibold normal-case"
+                  >Email-only login</span
+                >
+              </label>
+              <div class="relative">
+                <span
+                  class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400 pointer-events-none"
+                >
+                  <i class="fa-solid fa-envelope text-xs"></i>
+                </span>
+                <input
+                  type="email"
+                  id="clientEmail"
+                  required
+                  placeholder="your.email@company.com"
+                  class="form-input !pl-10 !py-2.5 !text-xs rounded-xl"
+                />
+              </div>
+              <p class="mt-1 text-[11px] text-slate-400">
+                We'll use this email to associate your project notes and
+                updates.
+              </p>
+            </div>
+
+            <!-- Field 2: Leave a message -->
+            <div>
+              <label
+                for="clientMessage"
+                class="block text-xs font-bold uppercase text-slate-600 dark:text-slate-400 mb-1.5"
+              >
+                Leave a Message
+              </label>
+              <textarea
+                id="clientMessage"
+                rows="4"
+                required
+                placeholder="Hi Glenn, I'd like to discuss our upcoming project / leave update notes..."
+                class="form-input !text-xs rounded-xl"
+              ></textarea>
+            </div>
+
+            <!-- Client Access Submit Button -->
+            <button
+              type="submit"
+              id="submitAccessBtn"
+              class="btn-brand w-full py-3 text-xs font-bold mt-2"
+            >
+              <i class="fa-solid fa-key mr-1.5"></i> Request Client Access &
+              Submit
+            </button>
+          </form>
+
+          <!-- Access Granted Confirmation (Initially Hidden) -->
+          <div
+            id="accessSuccessState"
+            class="hidden text-center py-4 space-y-4"
+          >
+            <div
+              class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400"
+            >
+              <i class="fa-solid fa-circle-check text-2xl"></i>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-slate-900 dark:text-white">
+                Client Access Confirmed!
+              </h2>
+              <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                Welcome to MyProject Insight. Your message and access session
+                have been logged.
+              </p>
+            </div>
+
+            <div
+              class="rounded-2xl border border-purple-100 bg-purple-50/60 p-4 text-left dark:border-dark-border dark:bg-dark-card space-y-2 text-xs"
+            >
+              <p class="text-slate-500">
+                <strong>Authenticated Email:</strong>
+                <span
+                  id="confirmedEmail"
+                  class="text-brand-600 dark:text-brand-400 font-mono"
+                ></span>
+              </p>
+              <p class="text-slate-500"><strong>Message Logged:</strong></p>
+              <p
+                id="confirmedMessage"
+                class="text-slate-700 dark:text-slate-300 italic bg-white dark:bg-dark-surface p-2.5 rounded-lg border border-purple-100 dark:border-dark-border"
+              ></p>
+            </div>
+
+            <div class="pt-2 flex flex-col sm:flex-row gap-2">
+              <button
+                id="resetFormBtn"
+                class="btn-brand-outline w-full py-2.5 text-xs"
+              >
+                <i class="fa-solid fa-pen mr-1"></i> Send Another Message
+              </button>
+              <a
+                href="index.html"
+                class="btn-brand w-full py-2.5 text-xs text-center"
+              >
+                <i class="fa-solid fa-house mr-1"></i> Back to Website
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="mt-6 border-t border-purple-100 pt-4 text-center dark:border-dark-border"
+          >
+            <p class="text-[11px] text-slate-400">
+              Need urgent assistance? Reach Glenn Gonzaga directly at
+              <a
+                href="mailto:glenngonzaga311@gmail.com"
+                class="font-bold text-brand-600 hover:underline"
+                >glenngonzaga311@gmail.com</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="border-t border-dark-border bg-dark-bg py-8 text-slate-100">
+      <div
+        class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 text-center sm:flex-row sm:text-left lg:px-8"
+      >
+        <div
+          class="flex items-center gap-4 text-xs font-semibold text-slate-300"
+        >
+          <img
+            id="navLogoImg"
+            src="assets/myname_logo.png"
+            alt="GonzVertex"
+            class="block h-8 w-auto shrink-0 object-contain sm:h-12 md:h-14 lg:h-16"
+          />
+          <p
+            class="flex items-center gap-4 text-xs font-semibold text-slate-300"
+          >
+            copyright © <span id="currentYear"></span> • Glenn Gonzaga. All
+            rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Theme Engine
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("themeToggle");
+      const themeIcon = document.getElementById("themeIcon");
+
+      const savedTheme = localStorage.getItem("portfolio-theme");
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
+
+      if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+        root.classList.add("dark");
+      } else {
+        root.classList.remove("dark");
+      }
+
+      function updateThemeUI() {
+        const isDark = root.classList.contains("dark");
+        if (themeIcon) {
+          themeIcon.className = isDark
+            ? "fa-solid fa-sun text-xs"
+            : "fa-solid fa-moon text-xs";
+        }
+      }
+      updateThemeUI();
+
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          root.classList.toggle("dark");
+          const isDark = root.classList.contains("dark");
+          localStorage.setItem("portfolio-theme", isDark ? "dark" : "light");
+          updateThemeUI();
+        });
+      }
+
+      // Dynamic Year
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+
+      // Client Access Form Submission Handler (Email-Only + Message)
+
+      const accessSuccessState = document.getElementById("accessSuccessState");
+      const confirmedEmail = document.getElementById("confirmedEmail");
+      const confirmedMessage = document.getElementById("confirmedMessage");
+      const resetFormBtn = document.getElementById("resetFormBtn");
+
+      // Client Access Form Submission Handler (Sends email via Formspree & opens success.html in a new tab)
+      const clientAccessForm = document.getElementById("clientAccessForm");
+
+      if (clientAccessForm) {
+        clientAccessForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const email = document.getElementById("clientEmail").value.trim();
+          const message = document.getElementById("clientMessage").value.trim();
+
+          if (!email || !message) return;
+
+          // 1. Store locally for your demo logs
+          const existingRequests = JSON.parse(
+            localStorage.getItem("client_access_requests") || "[]",
+          );
+          const newEntry = {
+            email: email,
+            message: message,
+            timestamp: new Date().toISOString(),
+          };
+          existingRequests.push(newEntry);
+          localStorage.setItem(
+            "client_access_requests",
+            JSON.stringify(existingRequests),
+          );
+          localStorage.setItem("client_authenticated_email", email);
+
+          // 2. Save data for success.html display
+          localStorage.setItem("last_contact_email", email);
+          localStorage.setItem(
+            "last_contact_subject",
+            "Client Access Workspace Message",
+          );
+
+          try {
+            // 3. PUT YOUR FORMSPREE LINK HERE ⬇️
+            const response = await fetch(
+              "https://formspree.io/f/YOUR_CLIENT_FORM_ID",
+              {
+                method: "POST",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  email: email,
+                  message: message,
+                  subject: "Client Access Portal Message",
+                }),
+              },
+            );
+
+            if (response.ok) {
+              clientAccessForm.reset();
+              // Opens your success page in a brand new tab
+              window.open("success.html", "_blank");
+            } else {
+              throw new Error("Form submission error");
+            }
+          } catch (error) {
+            // Fallback: Opens success tab even if network/CORS blocks fetch
+            window.open("success.html", "_blank");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
